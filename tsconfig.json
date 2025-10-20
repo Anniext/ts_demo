@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "module": "ESNext",
+        "target": "ES2022",
+        "types": ["node", "jest"],
+        "esModuleInterop": true,
+        "moduleResolution": "bundler",
+        "strict": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        }
+    }
+}

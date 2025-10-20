@@ -1,0 +1,36 @@
+{
+    "name": "ts_demo",
+    "version": "1.0.0",
+    "description": "",
+    "homepage": "https://github.com/Anniext/ts_demo#readme",
+    "bugs": {
+        "url": "https://github.com/Anniext/ts_demo/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Anniext/ts_demo.git"
+    },
+    "license": "ISC",
+    "author": "Anniext(dasaying@gmail.com)",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon src/index.ts",
+        "build": "tsc --outDir dist && tsc-alias -p tsconfig.json",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@eslint/css": "^0.13.0",
+        "@eslint/js": "^9.38.0",
+        "@eslint/json": "^0.13.2",
+        "@eslint/markdown": "^7.4.0",
+        "@types/jest": "^30.0.0",
+        "@types/node": "^24.8.1",
+        "eslint": "^9.38.0",
+        "globals": "^16.4.0",
+        "jiti": "^2.6.1",
+        "ts-jest": "^29.4.5",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.46.1"
+    }
+}

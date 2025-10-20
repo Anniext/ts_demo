@@ -1,0 +1,10 @@
+node_modules/
+dist/
+CRUSH.md
+coverage/
+.DS_Store
+.idea
+.kiro
+.crush
+.vscode
+.zed
