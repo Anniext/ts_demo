@@ -33,6 +33,7 @@ npm install -g eslint
 ### 安装 pre-commit
 
 pre-commit 是一个代码检查工具，可以在提交代码前进行代码检查。
+`pre-commit install` 初始化代码检查工具
 
 ```bash
 pipx install pre-commit
