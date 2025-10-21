@@ -81,6 +81,12 @@ git cliff 是一个生成 changelog 的工具。
 cargo install git-cliff
 ```
 
+读取cliff.toml 生成更变日志
+
+```bash
+git cliff --output CHANGELOG.md
+```
+
 ### 安装 jest
 
 jest 是一个测试框架。
