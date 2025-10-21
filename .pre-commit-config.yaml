@@ -46,7 +46,7 @@ repos:
           - id: eslint
             name: eslint
             description: Lint TypeScript / JavaScript sources
-            entry: npx eslint --fix --max-warnings 0
+            entry: npm run lint && npx eslint --fix --max-warnings 0
             language: node
             types_or: [javascript, jsx, ts, tsx]
           - id: jest

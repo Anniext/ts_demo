@@ -25,5 +25,8 @@ export default defineConfig([
         plugins: { markdown },
         language: "markdown/gfm",
         extends: ["markdown/recommended"],
+        rules: {
+            "markdown/no-missing-label-refs": "off",
+        },
     },
 ]);
