@@ -1,0 +1,68 @@
+name: build
+
+on:
+    push:
+        branches: [master]
+        tags: ["v*"]
+    pull_request:
+        branches: [master]
+
+permissions:
+    contents: write
+
+jobs:
+    build-ts:
+        strategy:
+            fail-fast: false
+            matrix:
+                platform: [ubuntu-latest]
+        runs-on: ${{ matrix.platform }}
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  submodules: recursive
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: npm
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Lint & Format (Prettier + ESLint)
+              run: npm run lint
+
+            - name: Type check (tsc)
+              run: npx tsc --noEmit
+
+            - name: Run Jest tests
+              run: npm run test:cov
+
+            - name: Upload coverage
+              uses: codecov/codecov-action@v4
+              if: matrix.platform == 'ubuntu-latest'
+              with:
+                  files: ./coverage/lcov.info
+                  token: ${{ secrets.CODECOV_TOKEN }}
+
+            - name: Generate changelog
+              if: startsWith(github.ref, 'refs/tags/')
+              uses: orhun/git-cliff-action@v2
+              id: git-cliff
+              with:
+                  config: cliff.toml
+                  args: -vv --latest --strip header
+              env:
+                  OUTPUT: CHANGES.md
+
+            - name: Release
+              if: startsWith(github.ref, 'refs/tags/')
+              uses: softprops/action-gh-release@v1
+              with:
+                  body: ${{ steps.git-cliff.outputs.content }}
+                  files: |
+                      coverage/lcov.info   # 需要就把报告一起贴出来
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

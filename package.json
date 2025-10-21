@@ -17,7 +17,11 @@
     "scripts": {
         "dev": "nodemon src/index.ts",
         "build": "tsc --outDir dist && tsc-alias -p tsconfig.json",
-        "test": "jest"
+        "test": "jest",
+        "lint": "prettier --check . && eslint . --max-warnings 0",
+        "lint:fix": "prettier --write . && eslint . --fix",
+        "test:cov": "jest --coverage",
+        "typecheck": "tsc --noEmit"
     },
     "devDependencies": {
         "@eslint/css": "^0.13.0",
