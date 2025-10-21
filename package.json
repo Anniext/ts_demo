@@ -36,5 +36,10 @@
         "ts-jest": "^29.4.5",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.46.1"
+    },
+    "dependencies": {
+        "audit": "^0.0.6",
+        "prettier": "^3.6.2",
+        "typos": "^1.0.1"
     }
 }
